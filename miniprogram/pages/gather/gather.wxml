@@ -42,14 +42,24 @@
 
   <van-cell-group>
     <van-panel wx:for="{{res.listing}}" wx:for-index="panel_index" wx:key="panel_index" title="{{item.name}}">
-      <view style="padding: 10px;">
-        <van-radio-group wx:for="{{item.option}}" wx:for-index="index" wx:key="index" wx:for-item="checkbox"
+      <view style="padding: 10px;" wx:for="{{item.option}}" wx:for-index="index" wx:key="index"  wx:for-item="checkbox">
+
+        <van-radio-group wx:if="{{item.status}} == 'radio'"
           value="{{ from_data[panel_index].value }}" bind:change="onChange">
           <van-cell title="{{checkbox.name}}" clickable data-name="{{checkbox.value}}" bind:click="onClick"
             data-index="{{panel_index}}">
             <van-radio slot="right-icon" name="{{checkbox.value}}" />
           </van-cell>
         </van-radio-group>
+        
+        <van-radio-group wx:if="{{ from_data[panel_index].value }} == {{item.is_value}}"
+          value="{{ from_data[panel_index].value }}" bind:change="onChange">
+          <van-cell title="{{checkbox.name}}" clickable data-name="{{checkbox.value}}" bind:click="onClick"
+            data-index="{{panel_index}}">
+            <van-radio slot="right-icon" name="{{checkbox.value}}" />
+          </van-cell>
+        </van-radio-group>
+
       </view>
     </van-panel>
   </van-cell-group>
