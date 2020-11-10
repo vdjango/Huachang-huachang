@@ -1,0 +1,19 @@
+<view>
+
+  <view style="padding-top: 30rpx;" wx:if="{{skeleton_loading}}">
+    <van-skeleton title loading="{{ skeleton_loading }}" />
+    <view style="padding: 30rpx; padding-top: 60rpx;padding-bottom:60rpx;">
+      <van-skeleton row="3" loading="{{ skeleton_loading }}" />
+    </view>
+  </view>
+
+  <van-dialog id="van-dialog" />
+
+  <van-panel title="{{res.name}}">
+    <view style="padding: 15px;">
+      <van-cell wx:for="{{res.option}}" wx:for-index="index" wx:key="index" title="{{item.name}}" is-link
+        url="/pages/gather/gather?index={{index}}">
+      </van-cell>
+    </view>
+  </van-panel>
+</view>

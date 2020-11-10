@@ -1,0 +1,19 @@
+<!--miniprogram/pages/login/login.wxml-->
+<view>
+  <view class="headView">
+    <view class="headImageView">
+      <van-cell center>
+        <open-data class="headImage" type="userAvatarUrl"></open-data>
+      </van-cell>
+    </view>
+
+    <view class="titleText">申请获取以下权限</view>
+    <view class="contentText">获得你的公开信息(昵称,头像,手机等)</view>
+
+    <van-cell center>
+      <van-button block type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录
+      </van-button>
+    </van-cell>
+  </view>
+
+</view>

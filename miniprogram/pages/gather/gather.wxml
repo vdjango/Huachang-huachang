@@ -1,0 +1,61 @@
+<!--miniprogram/pages/gather/gather.wxml-->
+
+<view>
+  <view style="padding-top: 20rpx;" wx:if="{{skeleton_loading}}">
+    <view>
+      <van-skeleton row="2" loading="{{ skeleton_loading }}" />
+      <view style="padding: 30rpx; padding-top: 60rpx;padding-bottom:60rpx;">
+        <van-skeleton row="4" loading="{{ skeleton_loading }}" />
+      </view>
+    </view>
+    <view>
+      <van-skeleton row="2" loading="{{ skeleton_loading }}" />
+      <view style="padding: 30rpx; padding-top: 60rpx;padding-bottom:60rpx;">
+        <van-skeleton row="4" loading="{{ skeleton_loading }}" />
+      </view>
+    </view>
+    <view>
+      <van-skeleton row="2" loading="{{ skeleton_loading }}" />
+      <view style="padding: 30rpx; padding-top: 60rpx;padding-bottom:60rpx;">
+        <van-skeleton row="4" loading="{{ skeleton_loading }}" />
+      </view>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
+  <van-notify id="van-notify" />
+
+  <van-action-sheet show="{{ show }}" bind:close="onClose">
+    <view class="headView">
+      <view class="headImageView">
+        <van-cell center>
+          <open-data class="headImage" type="userAvatarUrl"></open-data>
+        </van-cell>
+      </view>
+
+      <view class="titleText">申请获取以下权限</view>
+      <view class="contentText">获得你的公开信息(昵称,头像,手机等)</view>
+
+      <van-button block type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录
+      </van-button>
+    </view>
+  </van-action-sheet>
+
+  <van-cell-group>
+    <van-panel wx:for="{{res.listing}}" wx:for-index="panel_index" wx:key="panel_index" title="{{item.name}}">
+      <view style="padding: 10px;">
+        <van-radio-group wx:for="{{item.option}}" wx:for-index="index" wx:key="index" wx:for-item="checkbox"
+          value="{{ from_data[panel_index].value }}" bind:change="onChange">
+          <van-cell title="{{checkbox.name}}" clickable data-name="{{checkbox.value}}" bind:click="onClick"
+            data-index="{{panel_index}}">
+            <van-radio slot="right-icon" name="{{checkbox.value}}" />
+          </van-cell>
+        </van-radio-group>
+      </view>
+    </van-panel>
+  </van-cell-group>
+  <van-panel wx:if="{{!skeleton_loading}}">
+    <view style="padding: 30rpx;">
+      <van-button block round type="info" bind:click="onPut" loading="{{from_loading}}">下一步</van-button>
+    </view>
+  </van-panel>
+</view>

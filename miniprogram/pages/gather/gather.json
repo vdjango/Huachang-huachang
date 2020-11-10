@@ -1,0 +1,15 @@
+{
+  "usingComponents": { 
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-radio": "@vant/weapp/radio/index", 
+    "van-panel": "@vant/weapp/panel/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
+  }
+}

@@ -1,0 +1,47 @@
+
+.headView {
+  margin: 70rpx 25rpx 50rpx 25rpx; 
+}
+
+.headImageView {
+  display: block;
+  margin: 50rpx;
+  margin-bottom: 0rpx;
+  height: 100rpx;
+}
+
+.headImage {
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  margin: auto;
+}
+
+.titleText {
+  margin: 50rpx;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: #020e0f;
+  text-align: center;
+}
+
+.contentText {
+  margin: 50rpx;
+  margin-top: 0rpx;
+  margin-bottom: 0rpx;
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+}
+
+.authBtn {
+  margin-top: 70rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  height: 90rpx;
+  font-size: 35rpx;
+}
+
+.login_button {
+  margin-top: 10rpx;
+}
