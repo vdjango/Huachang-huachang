@@ -159,5 +159,8 @@ Page({
     } else {
       Notify({ type: 'warning', message: '好像遗忘了什么～' });
     }
+  },
+  is_values(value, arr){
+    return false
   }
 })

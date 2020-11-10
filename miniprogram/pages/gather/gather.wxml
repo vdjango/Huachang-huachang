@@ -42,9 +42,9 @@
 
   <van-cell-group>
     <van-panel wx:for="{{res.listing}}" wx:for-index="panel_index" wx:key="panel_index" title="{{item.name}}">
-      <view style="padding: 10px;" wx:for="{{item.option}}" wx:for-index="index" wx:key="index"  wx:for-item="checkbox">
+      <view style="padding: 10px;">
 
-        <van-radio-group wx:if="{{item.status}} == 'radio'"
+        <van-radio-group wx:for="{{item.option}}" wx:for-index="index" wx:key="index" wx:for-item="checkbox"
           value="{{ from_data[panel_index].value }}" bind:change="onChange">
           <van-cell title="{{checkbox.name}}" clickable data-name="{{checkbox.value}}" bind:click="onClick"
             data-index="{{panel_index}}">
@@ -52,13 +52,16 @@
           </van-cell>
         </van-radio-group>
         
-        <van-radio-group wx:if="{{ from_data[panel_index].value }} == {{item.is_value}}"
-          value="{{ from_data[panel_index].value }}" bind:change="onChange">
-          <van-cell title="{{checkbox.name}}" clickable data-name="{{checkbox.value}}" bind:click="onClick"
-            data-index="{{panel_index}}">
-            <van-radio slot="right-icon" name="{{checkbox.value}}" />
-          </van-cell>
-        </van-radio-group>
+        <view wx:if="{{ from_data[panel_index].value }}" wx:for="{{item.listing}}" wx:for-index="index" wx:key="index"
+          wx:for-item="checkbox">
+         
+          PS:is_values({{from_data[panel_index].value}}, {{checkbox.is_value}}) - {{is_values(from_data[panel_index].value, checkbox.is_value)}}
+          <view wx:if="{{checkbox.is_value.indexOf(from_data[panel_index].value)}}">YES</view>
+        </view>
+
+
+
+
 
       </view>
     </van-panel>
