@@ -161,6 +161,7 @@ Page({
     }
   },
   is_values(value, arr){
+    console.log('test')
     return false
   }
 })

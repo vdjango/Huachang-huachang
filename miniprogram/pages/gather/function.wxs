@@ -1,0 +1,6 @@
+var arrayfind = function (arr, string) {
+  if (arr !== undefined && arr.indexOf(string)) {
+    return true
+  } else return false
+}
+module.exports.arrayfind = arrayfind; 
