@@ -40,9 +40,9 @@
     </view>
   </van-action-sheet>
 
-  <!-- <van-cell-group> -->
-
+  <!-- 最外围 -->
   <view wx:for="{{res.listing}}" wx:for-index="panel_index" wx:key="panel_index">
+    <!-- 第一级题目 -->
     <van-panel title="{{panel_index+1}}、{{item.name}}">
       <view style="padding: 10px;">
         <van-radio-group wx:for="{{item.option}}" wx:for-index="index" wx:key="index" wx:for-item="checkbox"
@@ -56,25 +56,32 @@
         </van-radio-group>
       </view>
     </van-panel>
+    <!-- 第一级题目 -->
+
+    <!-- 第二级题目 -->
     <view wx:if="{{ from_data[panel_index].value != null }}">
+
       <view wx:for="{{item.listing}}" wx:for-index="index" wx:key="index" wx:for-item="checkbox">
         <van-panel title="{{index+1}}). {{checkbox.name}}"
           wx:if="{{tools.arrayfind(checkbox.is_value, from_data[panel_index].value)}}">
           <view style="padding: 10px;">
-            {{checkbox.status}}
-
-            <van-checkbox-group wx:for="{{checkbox.option}}" wx:for-index="index" wx:key="checkbox_index"
-              wx:for-item="data" value="{{ from_data[panel_index][checkbox_index].value }}" bind:change="onChange">
+            
+            <!-- {{ from_data[panel_index][checkbox_index].listing.value }} onChange-->
+            <van-radio-group wx:for="{{checkbox.option}}" wx:for-index="checkbox_index" 
+            wx:key="checkbox_index" wx:for-item="data"
+            value="{{from_data[panel_index].listing[index].value}}" bind:change="onChange">
               <van-cell-group>
-                <van-cell title="{{index+1}}. {{data.name}}" clickable data-name="{{data.value}}" bind:click="onClick"
-                  data-index="{{panel_index}}">
-                  <van-checkbox name="{{data.value}}"></van-checkbox>
+                
+                <!-- from_data[panel_index].value -->
+
+                <van-cell title="{{checkbox_index+1}}. {{data.name}}" clickable 
+                data-name="{{data.value}}" data-panel="{{panel_index}}" data-index="{{index}}" bind:click="onClickMin">
+                  <van-radio name="{{data.value}}"></van-radio>
                 </van-cell>
+
               </van-cell-group>
-            </van-checkbox-group>
-
-
-            <van-radio-group wx:for="{{checkbox.option}}" wx:for-index="index" wx:key="checkbox_index"
+            </van-radio-group>
+            <!-- <van-radio-group wx:for="{{checkbox.option}}" wx:for-index="index" wx:key="checkbox_index"
               wx:for-item="radio" value="{{ from_data[panel_index][checkbox_index].value }}" bind:change="onChange">
               <van-cell-group>
                 <van-cell title="{{index+1}}. {{radio.name}}" clickable data-name="{{radio.value}}" bind:click="onClick"
@@ -82,14 +89,16 @@
                   <van-radio slot="right-icon" name="{{radio.value}}" />
                 </van-cell>
               </van-cell-group>
-            </van-radio-group>
+            </van-radio-group> -->
           </view>
         </van-panel>
       </view>
     </view>
+    <!-- 第二级题目 -->
+    
   </view>
+  <!-- 最外围 -->
 
-  <!-- </van-cell-group> -->
   <van-panel wx:if="{{!skeleton_loading}}">
     <view style="padding: 30rpx;">
       <van-button block round type="info" bind:click="onPut" loading="{{from_loading}}">下一步</van-button>

@@ -10,6 +10,7 @@ Page({
    */
   data: {
     show: false,
+    a:0,
     actions: [
       { name: '获取用户信息', color: '#07c160', openType: 'getUserInfo' },
     ],
@@ -56,13 +57,26 @@ Page({
       success: function (res) {
         if (res.data) {
           let option_data = []
+          
+
           for (const key in res.data[0].option[options.index].listing) {
-            // console.log(key)
+
+            let option_listing = []
+            for (const key_listing in res.data[0].option[options.index].listing[key].listing) {
+              console.log(option_listing)
+              option_listing.push({
+                index: key_listing,
+                value: 1
+              })
+            }
+
             option_data.push({
               index: key,
-              value: null
+              value: null,
+              listing: option_listing
             })
           }
+
           _this.setData({
             res: res.data[0].option[options.index],
             from_data: option_data,
@@ -136,6 +150,13 @@ Page({
     this.setData({
       ['from_data[' + index + '].value']: name,
     });
+  },
+  onClickMin(event){
+    const { panel, index, name } = event.currentTarget.dataset;
+    this.setData({
+      ['from_data[' + panel + '].listing[' + index + '].value']: name,
+    });
+    console.log(this.data.from_data[panel].listing[index], index, index)
   },
   onPut() {
     let count = 0
